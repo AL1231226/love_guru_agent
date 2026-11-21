@@ -168,7 +168,6 @@ java -jar target/image-search-mcp-server-0.0.1-SNAPSHOT.jar
 
 ## 注意事项
 
-- 不要提交真实密钥：`application-prod.yaml`、`.env*`、`chat-memory/`、`tmp/` 已在 `.gitignore` 中排除
 - `chat-memory/` 存放会话序列化文件，可能包含聊天内容，请勿公开
 - 当前 CORS 允许所有来源，生产环境建议收紧 `CorsConfig`
 - pgvector 向量库配置目前为注释状态，启用需准备 PostgreSQL 并安装 pgvector 扩展
