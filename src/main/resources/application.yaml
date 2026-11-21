@@ -1,0 +1,60 @@
+spring:
+  application:
+    name: yu-ai-agent
+  profiles:
+    active: prod
+#  datasource:
+#    url: jdbc:postgresql://pgm-2ze65eb13mhjr3haao.rwlb.rds.aliyuncs.com:5432/le_ai_storage
+#    username: xxx
+#    password: 123456
+
+  ai:
+    dashscope:
+      api-key: ${qiwen_key}
+      base-url: https://llm-qaz47d2ye99wr5dk.cn-beijing.maas.aliyuncs.com
+      chat:
+        options:
+          model: qwen3.8-flash
+          # qwen3.8-max 是多模态模型，必须走 multimodal-generation 接口
+          multi-model: true
+#    vectorstore:
+#      pgvector:
+#        index-type: HNSW
+#        distance-type: COSINE_DISTANCE
+#        dimensions: 1024
+#        max-document-batch-size: 10000 # Optional: Maximum number of documents per batch
+#        initialize-schema: true
+#    mcp:
+#      client:
+##        sse:
+##          connections:
+# #           server1:
+##              url: http://localhost:8127
+#         stdio:
+#           servers-configuration: classpath:mcp/mcp-servers.json
+
+
+server:
+  port: 8123
+  servlet:
+    context-path: /api
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 'default'
+      paths-to-match:
+        - "/**"
+      packages-to-scan:
+        - com.liule.le_ai_agent.controller
+
+
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
